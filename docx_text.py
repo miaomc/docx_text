@@ -106,7 +106,7 @@ def search_text(d, key_value):
     return lst_res
         
 def search_in_json():
-    """在生成的json（是个字典{文件名：文件内容}）中查找对应文件的关键字"""
+    """在生成的json（是个字典{文件名：文件内容}）中查找对应文件的关键字"""
     with open('products.json','r') as f1:
         d = json.load(f1,encoding='cp936')
     while True:
