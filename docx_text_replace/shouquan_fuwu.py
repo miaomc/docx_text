@@ -2,6 +2,9 @@
 import docx
 import sys
 
+reload(sys)
+sys.setdefaultencoding( "cp936" )
+
 ##def readDocx(docName):
 ##    fullText = []
 ##    doc = docx.Document(docName)
