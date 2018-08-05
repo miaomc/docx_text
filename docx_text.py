@@ -27,7 +27,7 @@ def read_tables(doc):
             tmp = ''
             for cell in row.cells:
                 tmp += cell.text + '\t'
-        tblText.append(tmp)
+                tblText.append(tmp)
 
     return '\n'.join(tblText)
 
@@ -102,7 +102,8 @@ def search_text(d, key_value):
     lst_res = []
     for i in d.keys():
         if key_value in d[i]:
-            lst_res.append(i)
+            tmp = i+'\n    '+d[i][d[i].index(key_value)-10:d[i].index(key_value)+10]
+            lst_res.append(tmp)
     return lst_res
         
 def search_in_json():
