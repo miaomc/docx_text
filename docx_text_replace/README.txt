@@ -19,6 +19,6 @@ P.S.
 pip install python-docx -i https://mirrors.aliyun.com/pypi/simple/
 3、注意是pyinstaller而不是pyinstall
 4、pyinstaller -F shouquan_fuwu.py
-5、pyinstaller -F main_frame.py
+5、pyinstaller -F main_frame.py --noconsole
 
 
