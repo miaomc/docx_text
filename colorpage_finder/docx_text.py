@@ -70,10 +70,9 @@ def test_word():
     print read_paragraphs(doc)
     print read_tables(doc)
 
-def make_doxc2json():
+def make_doxc2json(path):
     """将所有*.doc的文件转换为*.docx, 读取内容，生成{文件名：文件内容}的json """
     # make all *.doc SaveAs *.docx
-    path = r'F:\分销产品彩页\分销产品彩页(update_20180815)'
     path = raw_input('Default ColorPage Path('+path+'):') or path
     l = search_file(path)
     for i in l:
@@ -109,25 +108,53 @@ def search_text(d, key_value):
     lst_res = []
     for i in d.keys():
         if key_value in d[i]:
-            tmp = i+'\n    '+d[i][d[i].index(key_value)-10:d[i].index(key_value)+10]
+            start = d[i].index(key_value)-10
+            if start<0:
+                start = 0
+            tmp = [i,d[i][start:start+20]]
             lst_res.append(tmp)
     return lst_res
         
 def search_in_json():
-    """在生成的json（是个字典{文件名：文件内容}）中查找对应文件的关键字"""
+    """
+    在生成的json（是个字典{文件名：文件内容}）中查找对应文件的关键字;
+    可以用空格隔开多个输入关键字
+    """
     with open('products.json','r') as f1:
         d = json.load(f1,encoding='cp936')
     while True:
         text = raw_input("Enter 'q' to quit:").decode('cp936')
         if text == 'q':
-            exit(0)
-        l = search_text(d, key_value = text)
-        for i in l:
-            print i
+            return
+
+        text_list = text.split(' ')  # 用空格隔开
+        result ={}  # {key1:[[filename11, content11], [filename12, content12]...]...}
+        for key_tmp in text_list:
+            result[key_tmp] = search_text(d, key_value = key_tmp)
+
+##        return result
+
+        this_key = result.keys()[0]
+        for filename_content in result[this_key]:
+            filename = filename_content[0]
+            whether_print = True
+            for other_key in result.keys():
+                if this_key==other_key:
+                    continue
+                if  filename not in [f_c[0] for f_c in result[other_key]]:
+                    whether_print = False
+                    break
+            if whether_print:
+                print filename
+                for key_tmp in result.keys():
+                    for f_c_tmp in result[key_tmp]:
+                        if f_c_tmp[0]==filename:
+                            print '[',f_c_tmp[1],']'
+        print            
         
 if __name__ == '__main__':
-##    make_doxc2json()
-    search_in_json()
+##    make_doxc2json(path = r'D:\python\docx_text\colorpage_finder\201908分销IPC&NVR彩页')
+    tmp = search_in_json()
     
 ##  多了一个 "~$V IPC322E-H 1080P红外防暴半球网络摄像机彩页V2.1.docx"文件
 ##    import glob
