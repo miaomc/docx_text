@@ -7,3 +7,4 @@ Deal with Office Word :
 P.S.
 1. The 'text' json is encoded by 'unicode'
 2. Python Idle forward content quick key "Alt+P" 
+3. pip install -i https://pypi.douban.com/simple/ python_docx

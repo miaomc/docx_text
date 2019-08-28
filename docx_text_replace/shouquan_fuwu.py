@@ -54,7 +54,7 @@ def replace(old_name, new_name, ziku=None):
     
 def shouquan_fuwu_replace(replace_dir):
     shouquan_docx = u'制造厂商授权函【Uniview】无时效性限制20160101_template.docx'
-    shouhou_docx = u'售后服务承诺模板【Uniview】20160901_template.docx'
+    shouhou_docx = u'【20190709】宇视科技售后服务承诺模板_template.docx'
 
     docx_list = [shouquan_docx, shouhou_docx]
     for i in docx_list:
@@ -67,14 +67,14 @@ def shouquan_fuwu_replace(replace_dir):
         replace(old_name=i, new_name=new_doc_name, ziku=replace_dir)
 
 def info_input():
-    jiafang_name = u'甲方A'
-    xiangmu_name = u'湖南省XX项目（采购号XX）'
-    jichengshang_name = u'湖南XX科技公司'
-    jichengshang_dizhi = u'芙蓉区XX楼XX号XX栋，XX房'
-    time_weibao = u'2'
-    time_yyyy = u'2018'
-    time_mm = u'7'
-    time_dd = u'22'
+    jiafang_name = u'甲方（XX单位）'
+    xiangmu_name = u'项目名称（湖南省XX项目（采购号XX））'
+    jichengshang_name = u'集成商（湖南XX科技公司）'
+    jichengshang_dizhi = u'集成商地址（芙蓉区XX楼XX号XX栋，XX房）'
+    time_weibao = u'维保时间（2）'
+    time_yyyy = u'年（2018）'
+    time_mm = u'月（7）'
+    time_dd = u'日（22）'
 
     replace_dir = {u'JIAFANG':jiafang_name,
                    u'XIANGMU':xiangmu_name,

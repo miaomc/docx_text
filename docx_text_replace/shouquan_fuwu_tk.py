@@ -27,7 +27,7 @@ def replace(old_name, new_name, ziku=None):
     
 def shouquan_fuwu_replace(replace_dir):
     shouquan_docx = u'制造厂商授权函【Uniview】无时效性限制20160101_template.docx'
-    shouhou_docx = u'售后服务承诺模板【Uniview】20160901_template.docx'
+    shouhou_docx = u'【20190709】宇视科技售后服务承诺模板_template.docx'
 
     docx_list = [shouquan_docx, shouhou_docx]
     for i in docx_list:

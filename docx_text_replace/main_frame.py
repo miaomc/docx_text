@@ -1,5 +1,5 @@
 # -*- coding: cp936 -*-
-import tkinter as tk
+import Tkinter as tk
 import shouquan_fuwu_tk
     
 
