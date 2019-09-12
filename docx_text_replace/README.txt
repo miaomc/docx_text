@@ -17,7 +17,7 @@ P.S.
 1、注意是python-docx而不是docx
 2、修改源
 pip install python-docx -i https://mirrors.aliyun.com/pypi/simple/
-3、注意是pyinstaller而不是pyinstall
+3、注意是pyinstaller而不是pyinstall，pip install PyInstaller -i https://mirrors.aliyun.com/pypi/simple/
 4、pyinstaller -F shouquan_fuwu.py
 5、pyinstaller -F main_frame.py --noconsole
 
