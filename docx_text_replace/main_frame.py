@@ -30,7 +30,7 @@ lst_mannaul = [u'JIAFANG',
                u'TIME_DD']
 
 mainframe = tk.Tk()
-mainframe.title(u'一键授权&售后函工具')
+mainframe.title(u'一键授权&售后函工具V2.1')
 #标签控件，显示文本和位图，展示在第一行
 
 entry_list = []
@@ -40,13 +40,22 @@ for n,i in enumerate(lst_mannaul):
     tmp.grid(row=n*2,column=1)
 
     entry_list.append(tmp)
+    
+label = tk.Label(mainframe,text='      0          ').grid(row=len(lst_mannaul)*2+2,sticky=tk.W)#靠右
+
+making_times = 0
 
 def do_replace():
+    global making_times
+    making_times += 1
+    label = tk.Label(mainframe,text='    making..').grid(row=len(lst_mannaul)*2+2,sticky=tk.W)#靠右
     for n,i in enumerate(lst_mannaul):
         replace_dir[i] = entry_list[n].get()#!!!!!!h01768.decode(sys.stdin.encoding)
     
     shouquan_fuwu_tk.shouquan_fuwu_replace(replace_dir)
+    label = tk.Label(mainframe,text='      '+str(making_times)+'  ok.     ').grid(row=len(lst_mannaul)*2+2,sticky=tk.W)#靠右
     print 'ok'
+
 
 tk.Button(mainframe,text=u'生成服务&授权函',width=15,height=2,command=do_replace).grid(row=len(lst_mannaul)*2+2, column=1)
 
